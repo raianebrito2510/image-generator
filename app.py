@@ -5,12 +5,17 @@ import numpy as np
 import io
 import base64
 import matplotlib
+import os
 
 model_path = 'untitled0.py'
 
 app = Flask(__name__)
 
-(X_train, y_train), (x_test, y_test) = mnist.load_data()
+mnist_data_path = os.path.join('data', 'mnist.npz')
+with np.load(mnist_data_path, allow_pickle=True) as f:
+
+    X_train, y_train = f['x_train'], f['y_train']
+    x_test, y_test = f['x_test'], f['y_test']
 
 
 @app.route('/')
