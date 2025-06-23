@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handwritten Digit Image Generator</title>
+</head>
+<body>
+
+  <h3>Handwritten Digit Image Generator</h3>
+  <form action="/submit" method="post">
+    <input type="number" name="number" max="9" min="0"/>
+    <button type="submit">Generate</button>
+  </form>
+
+  {% if number is not none %}
+    <h3>Generated images</h3>
+    {% for img in images %}
+      <img src="data:images/png;base64, {{ img }}" width="100"/>
+    {% endfor %}
+  {% endif %}
+</body>
+</html>
